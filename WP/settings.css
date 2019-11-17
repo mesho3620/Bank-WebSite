@@ -1,0 +1,547 @@
+
+p{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+img{
+	  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+   position: relative;
+}
+
+.mySlides{
+	display:none;
+		  border-radius: 0%;
+   position: relative;
+
+	}
+
+iframe{
+	 position: absolute;
+    top: 0;
+    left: 0;
+	
+}
+
+.img
+{
+	padding:5px; 
+	background-color:black;
+	width:100%;
+}
+
+
+
+
+a:visited{
+	color: Grey;
+	
+}
+
+.img a{
+position:absolute;
+right:16.2%;
+top:5.1%;
+}
+
+
+.img1
+{
+	padding:5px; 
+	background-color:black;
+	width:101%;
+}
+
+.img1 a{
+position:absolute;
+right:16.2%;
+top:5.1%;
+}
+
+.Lower-tab
+{
+	position:relative;
+	background-color:black;
+	width:100%;
+	height:300px;
+	
+}
+
+.Lower-tab a{
+position:absolute;
+bottom : 100px;
+}
+
+.Main-Branch-Box{
+	
+	background-color:black;
+	width:15%;
+	height:18%;
+position: absolute;
+
+	
+}
+
+
+.Divider {
+  height: 200px;
+  width: 3px;
+  background-color: whitesmoke;
+  position:absolute;
+}
+
+.imgContact
+{ 
+	background-color: lightgray;
+	width: 1000px;
+	height: 300px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
+}
+
+.aligning{
+ float:left;
+ display:inline-block;
+ }
+
+
+#back
+{
+	background-image:url(bnr-FNB-freedom-plaza-windhoek.jpg);
+	width:100%;
+	background-size:cover;
+	 object-fit: cover;
+}
+
+#backContact
+{
+	 object-fit: cover;
+	background-image:url(BackContact.jpg);
+	height:100vh;
+	width:100%;
+	background-size:cover;
+	background-color:black;
+}
+
+#backblack
+{
+	 object-fit: cover;
+	background-color:rgba(0,0,0,0.6);
+	height:100vh;
+	width:99.5%;	
+	border:9px solid black;
+}
+
+.list
+{
+	background-color:lightgray;
+	width:100.7%;
+	height:32px;
+	border:3px solid grey;
+}
+
+.list a
+{
+	position:relative;
+	width:100%;
+	font-size:20px;
+	color:black;
+	text-decoration:none;
+	padding:50px;
+	text-align:left;
+	font-family:Arial;
+	display:inline;
+}
+.list a:hover
+{
+	color:orange;
+}
+
+.list button 
+{
+	background-color:lightgray;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 45px;
+	transition: 0.4s;
+	font-size: 20px;
+}
+
+
+
+
+
+.list button.active 
+{
+	background-color:lightblue;	
+}
+
+.list-bottom
+{
+	background-color:lightgray;
+	width:101%;
+}
+
+.list-bottom a
+{
+	width:100%;
+	font-size:17px;
+	color:whitesmoke;
+	text-decoration:none;
+	padding:12px 15px;
+	text-align:left;
+	font-family:Arial;
+	display:inline;
+}
+
+.list-bottom button 
+{
+	background-color:lightgray;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 70px;
+	transition: 0.4s;
+	font-size: 14px;
+}
+
+
+
+
+.list-bottom button.active 
+{
+	background-color:lightblue;	
+}
+
+
+
+.img input
+{
+	position:absolute;
+	right:300px;
+	top:32px;
+}
+
+.words
+{
+	position:absolute;
+	top:53%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+
+
+
+.words h1
+{
+	color:whitesmoke;
+	font-size:60px;
+	
+}
+
+.tabcontent h3
+{
+	margin-top:0;	
+	
+}
+	
+#search_tx
+{
+border:2px solid blue;
+	height:40px;
+	width:300px;
+	position:absolute;
+	top:7.1%;
+	right:0.5%;
+	border-radius:60px;
+	padding:10px
+}
+
+.search_properties_icon
+{
+
+	  position:absolute;
+	right:0.75%;
+	top:10.3%;
+    transform:translate(-50%,-50%);
+}
+
+#paragraphMain 
+{
+  color:darkorange;
+  padding:5px;
+}
+
+#heading 
+{
+ color:black;
+}
+
+.title-small
+{
+	position:absolute;
+	top:8%;
+	left:35%;
+	transform:translate(-50%,-50%);
+}
+
+.title-small h1
+{ 
+	color:darkcyan;
+	font-size:75px;
+}
+
+.title-big
+{
+	position:absolute;
+	top:17.5%;
+	left:35%;
+	transform:translate(-50%,-50%);
+}
+
+.title-big h1
+{ 
+	color:whitesmoke;
+	font-size:60px;
+}
+
+.Time{
+color:lightgray;
+position:absolute;
+top:3%;
+right:1%;
+font-size:20px;
+}
+
+#Find{
+	background-image:url(loc4.png);
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:25%;
+}
+.loc{
+color:darkcyan;
+padding:10px;
+}
+
+.loc1{
+color:crimson;
+font-size:19px;
+background-color:lightblue;
+}
+
+#branch_LB{
+position:absolute;
+top:20%;
+}
+#facebook_page{
+	text-decoration:none;
+	position:null;
+	top:1.5%;
+	right:1%;
+	color:blue;	
+}
+#imgcity{
+
+	background-image:url(FNB-Branch.jpg);
+	height:200%;
+	width:100%;
+	position:absolute;
+	background-size:cover;
+	}
+#AboutUs
+{
+position:absolute;
+left:40%;
+text-align:center;
+height:10%;
+width:20%;
+color:black;
+}
+
+#AboutUs_roots{
+width:50%;
+height:30%;
+position:absolute;
+top:10%;
+color:black;
+font-size:120%;
+}
+
+#AboutUs_FNB_Archives{
+width:50%;
+height:30%;
+position:absolute;
+top:34%;
+color:black;
+font-size:120%;
+
+}
+
+#AboutUs_FirstRand_Group
+{
+width:50%;
+height:30%;
+position:absolute;
+top:49%;
+color:black;
+font-size:120%;
+}
+
+#AboutUs_The_Associate_Model{
+width:50%;
+height:30%;
+position:absolute;
+top:66%;
+color:black;
+font-size:120%;
+}
+
+.email
+{
+position:absolute;
+top:68%;
+right:15%;
+color:whitesmoke;
+font-size:35px;
+}
+.email p
+{
+	position:absolute;
+	top:-150%;
+	left:3%;
+}
+.password
+{
+	position:absolute;
+	top:86%;
+	right:15%;
+	color:whitesmoke;
+	font-size:35px;
+	
+}
+.password p
+{
+	position:absolute;
+	top:-160%;
+	left:3%;
+}
+
+#inputem
+{
+	width:400px;
+	border:3px solid lightgray;
+	padding:15px 30px;
+	border-radius:30px;
+	outline:none;
+	border:2px solid darkorange;
+	box-shadow:0 0 8px darkorange;
+}
+#inputpw
+{
+	width:400px;
+	border:3px solid lightgray;
+	padding:15px 30px;
+	border-radius:30px;
+	outline:none;
+	border:2px solid darkorange;
+	box-shadow:0 0 8px darkorange;
+}
+.password button
+{
+	position:absolute;
+	top:120%;
+	left:30%;
+	width:450px;
+	height:40px;
+	margin-left:-128px;
+	margin-top:4%;
+	background-color:darkorange;
+	color:white;
+	font-weight:bold;
+	border-radius:30px;
+	font-size:20px;
+	outline:none;
+	border:2px solid white;
+}
+.email button
+{
+	position:absolute;
+	top:470%;
+	left:30%;
+	width:450px;
+	height:40px;
+	margin-left:-128px;
+	margin-top:4%;
+	background-color:darkorange;
+	color:white;
+	font-weight:bold;
+	border-radius:30px;
+	font-size:20px;
+	outline:none;
+	border:2px solid white;
+}
+::-webkit-input-placeholder
+{
+	
+	font-family:"Roboto", sans-serif;
+	font-size:15px;
+}
+.backhome
+{
+	background-color:pink;
+	width: 150px;
+	height: 30px;
+	top:50%;
+	right:50%;
+    border: 15px solid black;
+	padding: 200px;
+	margin: 200px;
+	margin-left:400px;
+	margin-top:140px;
+}
+#login
+{
+	  position:absolute; 
+	  top:25%; 
+	  right:13%;
+	  font-size:20px;
+	outline:none;
+	width:170px;
+	
+
+	background-color:darkorange;
+	color:white;
+	font-weight:bold;
+	border-radius:30px;
+	font-size:20px;
+	outline:none;
+	border:2px solid white;
+	cursor: pointer;
+}
+#signup
+{
+	position:absolute;
+	top:25%;
+	right:0.5%;
+	
+	 font-size:20px;
+	outline:none;
+	width:170px;
+	
+
+	background-color:darkorange;
+	color:white;
+	font-weight:bold;
+	border-radius:30px;
+	font-size:20px;
+	outline:none;
+	border:2px solid white;
+	cursor: pointer;
+}
