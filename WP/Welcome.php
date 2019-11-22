@@ -7,31 +7,22 @@
 	
 </head>
 
-<?php 
-include ("TopMenu.php");
-echo "<img class = 'mySlides' src = '1.jpg ' style = 'width :100%'>";
-echo "<img class = 'mySlides' src = '2.jpg ' style = 'width :100%'>";
-echo "<img class = 'mySlides' src = '3.jpg ' style = 'width :100%'>";
-echo "<img class = 'mySlides' src = '4.jpg ' style = 'width :100%'>";
-echo "<img class = 'mySlides' src = '5.jpg ' style = 'width :100%'>";
-include ("BottomMenu.php");
 
-?>
 
 <body onload="startTime()">
 
-	<div  id="back" >
+	<?php 
+include ("topmenu.php");
 
-	<div>
-
-</div>
-	
-		
-
+?>
 		
 		
+ <img class = 'mySlides' src = '1.jpg ' style = 'width :100%'>
+ <img class = 'mySlides' src = '2.jpg ' style = 'width :100%'>
+ <img class = 'mySlides' src = '3.jpg ' style = 'width :100%'>
+ <img class = 'mySlides' src = '4.jpg ' style = 'width :100%'>
+ <img class = 'mySlides' src = '5.jpg ' style = 'width :100%'>
 		
-	</div>
 	
 <script>
 
@@ -58,3 +49,7 @@ function slide (){
 </script>
 </body>
 </html>
+
+<?php
+include ("BottomMenu.php");
+?>
