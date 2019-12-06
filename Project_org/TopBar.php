@@ -15,9 +15,18 @@ if(isset($_POST['Login'])){ //check if form was submitted
 	{
 		$_SESSION["ID"]=$row["User_ID"];
 		$_SESSION["Name"]=$row["FirstName"]." ".$row["LastName"];
-
-
-
+		
+/*Just Added*/
+/*-----------------------------------------------------------------------*/
+		$_SESSION["FullName"]=$row["FirstName"]." ".$row["LastName"];
+		$_SESSION["Email"]=$row["Email"];
+		$_SESSION["Password"]=$row["Password"];
+		$_SESSION["MobilePhone"]=$row["Mobile_Phone"];
+		$_SESSION["NationalID"]=$row["National_ID"];
+		$_SESSION["Address"]=$row["Address"];
+		$_SESSION["Job"]=$row["Job"];
+		$_SESSION["Status"]=$row["Status"];	
+/*-----------------------------------------------------------------------*/
 		header("Location:homePage.php");
 	}
 	else	
