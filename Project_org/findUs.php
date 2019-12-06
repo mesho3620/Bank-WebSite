@@ -38,6 +38,11 @@
  height:50%;
  width:50%;
 }
+#picmsg
+{
+	background:url(Pictures&Videos/aerial-view-of-expressway-1720029.jpg) no-repeat center ;
+}
+
 </style>
 <body>
 
@@ -82,7 +87,7 @@ include "TopBar.php";
 </div>
 </div>
 
-<div style="background-color:white;">
+<div id="picmsg">
 <h2 style="text-decoration:underline;">Message Us</h2>
 
 <form id="MessageForm" action="" onSubmit="" method="post">
