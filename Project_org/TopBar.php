@@ -15,9 +15,18 @@ if(isset($_POST['Login'])){ //check if form was submitted
 	{
 		$_SESSION["ID"]=$row["User_ID"];
 		$_SESSION["Name"]=$row["FirstName"]." ".$row["LastName"];
-
-
-
+		
+/*Just Added*/
+/*-----------------------------------------------------------------------*/
+		$_SESSION["FullName"]=$row["FirstName"]." ".$row["LastName"];
+		$_SESSION["Email"]=$row["Email"];
+		$_SESSION["Password"]=$row["Password"];
+		$_SESSION["MobilePhone"]=$row["Mobile_Phone"];
+		$_SESSION["NationalID"]=$row["National_ID"];
+		$_SESSION["Address"]=$row["Address"];
+		$_SESSION["Job"]=$row["Job"];
+		$_SESSION["Status"]=$row["Status"];	
+/*-----------------------------------------------------------------------*/
 		header("Location:homePage.php");
 	}
 	else	
@@ -78,7 +87,7 @@ margin-top:1%;
 }
 
 .topnav2{
-	background-color:008b8b;
+	background-color:darkorange;
 	padding: 0.1% 0.1%;
 	color:white;
 }
@@ -114,6 +123,7 @@ float:right;
 	font-size:18%;
 	border-radius:6%;
 	transition:0.4s;
+	cursor:pointer;
 }
 .button:hover
 {
@@ -177,12 +187,12 @@ if(!empty($_SESSION['Name']))
 
 	echo "<b  id='header'>First National Bank</b>";
 	echo"<a href='../project_org/Q&A.php'>Q&A</a>";	
-	echo"<a href='../project_org/findUs.php'>FIND US</a>";																															
-	echo"<a href='../project_org/contactUs.php'>CONTACT US</a>";
-	echo"<a href='../project_org/aboutUs.php'>ABOUT US</a>";
-	echo"<a href='../project_org/RequestLoan.php'>REQUEST LOAN</a>";
-	echo"<a href='../project_org/Profile.php'>PROFILE</a>";
-	echo"<a href='../project_org/homePage.php'>HOME</a>";
+	echo"<a href='../project_org/findUs.php'>Find us</a>";																															
+	echo"<a href='../project_org/contactUs.php'>Contact us</a>";
+	echo"<a href='../project_org/aboutUs.php'>About us</a>";
+	echo"<a href='../project_org/RequestLoan.php'>Request Loan</a>";
+	echo"<a href='../project_org/Profile.php'>Profile</a>";
+	echo"<a href='../project_org/homePage.php'>Home</a>";
 
 	
 }
@@ -212,15 +222,11 @@ if(!empty($_SESSION['Name'])){
 else{
 	echo "Welcome Guest";
 	echo"<a href='../project_org/signUp.php'>Sign up</a>";	
-	echo"<input type='button' value='Login' style='background-color:008b8b; border:none; color:white; float:right;' id='Login_Button'>";	
+	echo"<input type='button' value='Login' style='background-color:darkorange; border:none; color:white; cursor:pointer;float:right;' id='Login_Button'>";	
 	
 }
 ?>
-<?php /*
-<div class="container">
-<a href="#" class="button">login</a>
-</div>
-*/?>
+
 
 <div class="popup">
 		<div class="popup-content">
