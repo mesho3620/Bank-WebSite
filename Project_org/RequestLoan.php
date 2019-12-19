@@ -10,31 +10,32 @@ include "TopBar.php"
 <?php
 
 include ("database.php");
-$ErrorMessageAmount="";
-$ErrorMessageHRLetter="";
 
-if(isset($_POST['Confirm_request'])){ //check if form was submitted
+if(isset($_POST['Confirm_request'])){ 
 
-
-	if(empty($_POST['HR_letter_tx']))
+	try
 	{
-		echo "<script>"."alert('Fill the HR letter.')"."</script>";
-	}
+		$_POST['HR_letter_tx']=filter_var($_POST['HR_letter_tx'], FILTER_SANITIZE_STRING);
 	
-	else if($_POST['Amount_tx']>500000)
-	{
-		echo "<script>"."alert('Amount is bigger than 500.000.')"."</script>";
-	}
-	
-	else if($_POST['Amount_tx']<20000)
-	{
-		echo "<script>"."alert('Amount is lower than 20.000.')"."</script>";
-	}
-	
-	else
-	{
+		if(empty($_POST['HR_letter_tx']))
+		{
+			throw new Exception("HR letter cant bet left empty");
+		}
+		if(empty($_POST['Amount_tx']))
+		{
+			throw new Exception("Amount cant bet left empty");
+		}	
+		if($_POST['Amount_tx']>500000||$_POST['Amount_tx']<20000)
+		{
+			throw new AmountException($_POST['Amount_tx']);
+		}
+		if(empty($_POST['Salary_tx']))
+		{
+			throw new Exception("Salary cant be left empty");
+		}
+		
 		$img=$_FILES['image']['name'];
-		$sql="INSERT INTO request_loan (FullName,Email,Mobile_Phone,National_ID, Address,Job,Loan_Status,Amount,Salary,HR_letter,National_ID_Photo) 
+		$sql="INSERT INTO request_loan (FullName,Email,Mobile_Phone,National_ID,Address,Job,Loan_Status,Amount,Salary,HR_letter,National_ID_Photo) 
 		values 
 		(
 		'".$_SESSION['FullName']."',
@@ -62,10 +63,30 @@ if(isset($_POST['Confirm_request'])){ //check if form was submitted
 			echo $sql;
 
 		}
+
 	}
+	catch (AmountException $e)
+	{
+		echo $e->errorMessage();
+	}
+	catch(Exception $e)
+	{
+		echo $e->getMessage();
+	}
+
 }
 
 
+?>
+
+<?php
+class AmountException extends Exception {
+  public function errorMessage() 
+  {
+    $errorMsg = $this->getMessage().' is not a valid Amount of money.';
+    return $errorMsg;
+  }
+}
 ?>
 
 <style>

@@ -12,6 +12,7 @@ include "TopBar.php";
 ?>
 <?php
 include ("database.php");
+
 $sql="SELECT * FROM request_loan where Email='".$_SESSION['Email']."'";
 	$result = mysqli_query($conn,$sql);		
 	if (mysqli_num_rows($result) > 0) {

@@ -3,6 +3,7 @@
 <title>First National Bank - Find us</title>
 <link rel="icon" type="image/png" href="Pictures&Videos/Untitled-1.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"></head>
+
 <style>
 
 .findus{
@@ -51,6 +52,77 @@ include "TopBar.php";
 ?>
 
 
+<?php
+
+include "database.php";
+
+if(isset($_POST['Send'])){ 
+
+	try
+	{
+		
+		$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+		$_POST['FullName']=filter_var($_POST['FullName'], FILTER_SANITIZE_STRING);
+		$_POST['Message_tx']=filter_var($_POST['Message_tx'], FILTER_SANITIZE_STRING);
+		
+		if(empty($_POST['Email'])||empty($_POST['FullName'])||empty($_POST['Message_tx']))
+		{
+			throw new Exception("Please Fill the Required Data to submit your message");
+		}
+		
+		if(filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL) === FALSE)
+		{
+			throw new EmailException($_POST['Email']);
+		}
+		
+		$emailSql="select * from users where Email='".$_POST['Email']."'";
+		$result=mysqli_query($conn,$emailSql);
+		if(!$result)
+		{
+			throw new EmailException($_POST['Email']);
+		}
+
+		$sql1="INSERT INTO messsage_us (FullName,Email,Message_Tx) 
+		values ('".$_POST['FullName']."','".$_POST['Email']."','".$_POST['Message_tx']."')";
+		
+
+		$result=mysqli_query($conn,$sql1);
+		if($result){
+			header("Location:homePage.php");
+			}
+
+		else{
+				throw new Exception("Could not execute sql statement $sql");
+			}
+		
+	}
+	catch (EmailException $e)
+	{
+		echo $e->errorMessage();
+	}
+	catch (Exception $e)
+	{
+		echo $e->getMessage();
+	}
+
+
+}
+
+?>
+
+<?php
+
+class EmailException extends Exception {
+  public function errorMessage() 
+  {
+    $errorMsg = $this->getMessage().' is not a valid E-Mail address.';
+    return $errorMsg;
+  }
+}
+
+?>
+
+
 <div class="findus">
 
 
@@ -90,26 +162,27 @@ include "TopBar.php";
 <div id="picmsg">
 <h2 style="text-decoration:underline;">Message Us</h2>
 
-<form id="MessageForm" action="" onSubmit="" method="post">
+<form id="MessageForm" method="post">
 Name <br>
-<input type='text' placeholder="FirstName"> <input type='text' placeholder="Last Name">
+<input type='text' placeholder="FullName" name="FullName">
 
 <br>
 <br>
 
 Email <br>
-<input type='Email' placeholder="Enter your email address">
+<input type='Email' placeholder="Enter your email address" name="Email">
 
 <br>
 <br>
 
-Comments <br>
-<textarea rows="4" cols="50"></textarea>
+Message <br>
+<textarea rows="4" cols="50" name="Message_tx"></textarea>
 
 <br>
 <br>
 
-<input type='submit' value="Submit">
+<input type='submit' value="Submit" name="Send">
+
 </form>
 
 </body>

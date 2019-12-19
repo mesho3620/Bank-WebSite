@@ -1,10 +1,13 @@
 <?php
 session_start();
-
+ob_start();
 include ("database.php");
 
 if(isset($_POST['Login'])){ //check if form was submitted
-	$sql="SELECT * FROM requests where Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
+
+	$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+
+	$sql="SELECT * FROM users where Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
 	$result = mysqli_query($conn,$sql);		
 	if($row=mysqli_fetch_array($result))	
 	{

@@ -11,6 +11,91 @@ include ("database.php");
 
 if(isset($_POST['Save'])){ 
 
+	$_POST['FirstName_tx']=filter_var($_POST['FirstName_tx'], FILTER_SANITIZE_STRING);
+	$_POST['LastName_tx']=filter_var($_POST['LastName_tx'], FILTER_SANITIZE_STRING);
+	$_POST['Email_tx']=filter_var($_POST['Email_tx'], FILTER_SANITIZE_EMAIL);
+	$_POST['Address_tx']=filter_var($_POST['Address_tx'], FILTER_SANITIZE_STRING);
+	$_POST['Job_tx']=filter_var($_POST['Job_tx'], FILTER_SANITIZE_STRING);
+	
+	try
+	{
+		$email=$_POST['Email_tx'];
+		if(empty($_POST['FirstName_tx'])||empty($_POST['LastName_tx'])||empty($_POST['Email_tx'])||empty($_POST['MobilePhone_tx'])||empty($_POST['NationalID_tx'])||empty($_POST['Address_tx'])||empty($_POST['Job_tx']))
+		{
+			throw new Exception("Data cant be left empty");
+		}
+		
+		if(strlen($_POST['FirstName_tx'])<3||strlen($_POST['FirstName_tx'])>15)
+		{
+		
+			throw new NameException($_POST['FirstName_tx']);
+		}
+		if(strlen($_POST['LastName_tx'])<3||strlen($_POST['LastName_tx'])>15)
+		{
+			
+			throw new NameException($_POST['LastName_tx']);
+			
+		}
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 									//***********************************
+		{
+			throw new EmailException(email);
+		}
+		if(!preg_match("/^\d{11}$/",$_POST['MobilePhone_tx']))									//***********************************
+		{
+			
+			throw new Exception("wrong mobile number ");
+			
+		}
+		if(!preg_match("/^\d{14}$/",$_POST['NationalID_tx']))		//validate a number of 10 digits with no comma, no spaces, no punctuation and there will be no + sign in front the number.
+		{
+			
+			throw new Exception ("wrong National ID format");
+			
+		}
+		
+		$exists=FALSE;
+		$sqlErr=FALSE;
+		
+		$MobileSql="SELECT * FROM users where Mobile_Phone ='".$_POST['MobilePhone_tx']."';";
+		$NationalIdSql="SELECT * FROM users where National_ID ='".$_POST['NationalID_tx']."';";
+
+		
+
+		if($result = mysqli_query($conn,$MobileSql))
+		{
+		
+			if(mysqli_num_rows($result)>0)
+			{
+
+				$exists=TRUE;
+				throw new Exception("Mobile number already exists");
+
+			}
+		}					
+		else
+		{
+		
+			$sqlErr=TRUE;
+			throw new SqlException($MobileSql);
+		}
+		if($result = mysqli_query($conn,$NationalIdSql))
+		{
+		
+			if(mysqli_num_rows($result)>0)
+			{
+				
+				$exists=TRUE;
+				throw new Exception("National ID already exists");
+
+			}
+					
+		}		
+		else
+		{
+			$sqlErr=TRUE;
+			throw new SqlException($NationalIdSql);
+		}
+		
 		$sql="UPDATE users set FirstName='".$_POST['FirstName_tx']."' , LastName='".$_POST['LastName_tx']."' , Email='".$_POST['Email_tx']."' , Mobile_Phone='".$_POST['MobilePhone_tx']."' , National_ID='".$_POST['NationalID_tx']."' , Job='".$_POST['Job_tx']."' , Address='".$_POST['Address_tx']."'where User_ID=".$_SESSION['ID']; 
 		
 		$result=mysqli_query($conn,$sql);
@@ -30,19 +115,36 @@ if(isset($_POST['Save'])){
 		}
 		else
 		{
-			echo $sql;
+			throw new Exception("could not Update Data");
 		}
 	
+	}
+	catch(SqlException $e)
+	{
+		echo $e->errorMessage();
+	}
+	catch(Exception $e)
+	{
+		echo $e->getMessage();
+	}
+
 }
 
 ?>
 
-<script>
-$(document).ready(function(){
-		$("#accept0").click(function(){
-		alert("hi");
-		});
+<?php
+
+class SqlException extends Exception {
+  public function errorMessage() 
+  {
+	$errorMsg="ERROR: Could not be able to exectute." .$this->getMessage(). mysqli_error($conn);
+    return $errorMsg;
+  }
 }
+
+?>
+
+
 
 
 <script>
@@ -102,7 +204,7 @@ $("#NationalID_tx").hide();
 	background-size:cover;
 	
 }
-.bt {
+.bt{
   background-color: darkcyan;
   border: none;
   color: white;
@@ -115,7 +217,7 @@ $("#NationalID_tx").hide();
   cursor:pointer;
 }
 
-.in {
+.in{
   
   border: none;
   padding: 2% 5%;

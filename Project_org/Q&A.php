@@ -8,31 +8,16 @@
 
 <?php
 include ("database.php");
+?>
 
-$emailError="";
+<?php
 
-if(isset($_POST['Send'])){ 
-	if(empty($_POST['Email_msg']))
-	{
-		$emailError="Email is required";
-	}
-
-	else
-	{
-		$sql1="INSERT INTO qanda (Email,Question) 
-		values ('".$_POST['Email_msg']."','".$_POST['question']."')";
-		
-		$result=mysqli_query($conn,$sql1);
-		if($result)	
-		{
-			
-			header("Location:homePage.php");
-		}
-		else
-		{
-			echo $sql1;
-		}
-	}
+class EmailException extends Exception {
+  public function errorMessage() 
+  {
+    $errorMsg = $this->getMessage().' is not a valid E-Mail address.';
+    return $errorMsg;
+  }
 }
 
 ?>
@@ -206,7 +191,51 @@ include "TopBar.php";
 
 <input type="Submit" value="Send" name="Send">
 <br><br>
-<?php echo $emailError?>
+<?php 
+
+
+if(isset($_POST['Send'])){ 
+
+	try 
+	{
+			$_POST['Email_msg']=filter_var($_POST['Email_msg'], FILTER_SANITIZE_EMAIL);
+			$_POST['question']=filter_var($_POST['question'], FILTER_SANITIZE_STRING);
+
+		if(empty($_POST['Email_msg']))
+		{
+			throw new Exception("Email address cant be left empty");
+		}
+		if(filter_var($_POST['Email_msg'], FILTER_VALIDATE_EMAIL) === FALSE)
+		{
+			throw new EmailException($_POST['Email_msg']);
+		}
+			
+		
+		$sql1="INSERT INTO qanda (Email,Question) 
+		values ('".$_POST['Email_msg']."','".$_POST['question']."')";
+		
+		$result=mysqli_query($conn,$sql1);
+		if($result)	
+		{
+			header("Location:homePage.php");
+		}
+		else
+		{
+			echo $sql1;
+		}
+	}
+	catch(EmailException $e)
+	{
+		echo $e->errorMessage();
+	}
+	catch(Exception $e)
+	{
+		echo $e->getMessage();
+
+	}	
+}
+
+?>
 <br><br>
 
 
