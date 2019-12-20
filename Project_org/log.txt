@@ -1,0 +1,16 @@
+[20-Dec-2019 00:48:24 Europe/Berlin] PHP Warning:  fopen(log.txt): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\error log.php on line 16
+[20-Dec-2019 13:35:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function allocate_new_foo() in C:\xampp\htdocs\project_org\error log.php:185
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\project_org\error log.php on line 185
+[20-Dec-2019 16:21:53 Europe/Berlin] PHP Notice:  Undefined variable: filename in C:\xampp\htdocs\project_org\error log.php on line 13
+[20-Dec-2019 16:24:32 Europe/Berlin] PHP Warning:  mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known.  in C:\xampp\htdocs\project_org\database.php on line 15[20-Dec-2019 16:42:59 Europe/Berlin] PHP Warning:  include(TopBr.php): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\displayLoan.php on line 14
+[20-Dec-2019 16:42:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'TopBr.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\project_org\displayLoan.php on line 14
+[20-Dec-2019 16:42:59 Europe/Berlin] PHP Warning:  require(dataase.php): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\displayLoan.php on line 15
+[20-Dec-2019 16:42:59 Europe/Berlin] PHP Fatal error:  require(): Failed opening required 'dataase.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\project_org\displayLoan.php on line 15
+[20-Dec-2019 16:43:20 Europe/Berlin] PHP Warning:  include(TopBr.php): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\displayLoan.php on line 14
+[20-Dec-2019 16:43:20 Europe/Berlin] PHP Warning:  include(): Failed opening 'TopBr.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\project_org\displayLoan.php on line 14
+[20-Dec-2019 16:43:20 Europe/Berlin] PHP Warning:  require(dataase.php): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\displayLoan.php on line 15
+[20-Dec-2019 16:43:20 Europe/Berlin] PHP Fatal error:  require(): Failed opening required 'dataase.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\project_org\displayLoan.php on line 15
+[20-Dec-2019 16:57:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$username' (T_VARIABLE) in C:\xampp\htdocs\project_org\database.php on line 13
+[20-Dec-2019 16:58:08 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$dbname' (T_VARIABLE) in C:\xampp\htdocs\project_org\database.php on line 15

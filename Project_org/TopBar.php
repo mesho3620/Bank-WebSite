@@ -1,4 +1,13 @@
 <?php
+ini_set('display_errors',0);
+ini_set('track_errors',1);
+ini_set('display_startup_errors',1);
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/log.txt');	
+error_reporting(-1);
+error_reporting(E_ALL | E_STRICT);
+
+
 session_start();
 ob_start();
 include ("database.php");
@@ -199,6 +208,8 @@ if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 
 else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	echo "<b  id='header'>First National Bank</b>";
+	echo"<a href='../project_org/error log.php'>Error Log</a>";
+	echo"<a href='../project_org/search.php'>Search</a>";
 	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
