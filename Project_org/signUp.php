@@ -9,6 +9,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script></head>
 <?php
+ini_set('display_errors',0);
+ini_set('track_errors',1);
+ini_set('display_startup_errors',1);
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/log.txt');	
+error_reporting(-1);
+error_reporting(E_ALL | E_STRICT);
+
+
 include "TopBar.php";
 ?>
 
@@ -24,62 +33,60 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $emailError="";
 
 if(isset($_POST['Submit'])){ //check if form was submitted
-	$email=$_POST['Email'];
-	if(empty($_POST['FirstName'])||empty($_POST['LastName'])||empty($_POST['Email'])||empty($_POST['Password'])||empty($_POST['ConfirmPassword'])||empty($_POST['MobilePhone'])||empty($_POST['NationalID'])||empty($_POST['Address'])||empty($_POST['Job']))
-	{
-		$emailError="Fill the required";
-		echo"<script> alert('Fill the required ')</script>";
+	$_POST['FirstName']=filter_var($_POST['FirstName'], FILTER_SANITIZE_STRING);
+	$_POST['LastName']=filter_var($_POST['LastName'], FILTER_SANITIZE_STRING);
+	$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+	$_POST['Address']=filter_var($_POST['Address'], FILTER_SANITIZE_STRING);
+	$_POST['Job']=filter_var($_POST['Job'], FILTER_SANITIZE_STRING);
 
-	}
-	
-	else if(strlen($_POST['FirstName'])<3||strlen($_POST['FirstName'])>15)
+	try
 	{
+		$email=$_POST['Email'];
+		if(empty($_POST['FirstName'])||empty($_POST['LastName'])||empty($_POST['Email'])||empty($_POST['Password'])||empty($_POST['ConfirmPassword'])||empty($_POST['MobilePhone'])||empty($_POST['NationalID'])||empty($_POST['Address'])||empty($_POST['Job']))
+		{
+			throw new Exception("Please fill the required data");
+		}
 		
-		echo"<script> alert('First Name is Invalid ')</script>";
+		if(strlen($_POST['FirstName'])<3||strlen($_POST['FirstName'])>15)
+		{
 		
-	}
-	
-	else if(strlen($_POST['LastName'])<3||strlen($_POST['LastName'])>15)
-	{
-		
-		echo"<script> alert('Last Name is Invalid ')</script>";
-		
-	}
-	
-	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
-	{
-		echo"<script> alert('".$email." is an invalid email address')</script>";
-	}
-	
-	else if(!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/",$_POST['Password']))
-	{
+			throw new NameException($_POST['FirstName']);
+		}
+		if(strlen($_POST['LastName'])<3||strlen($_POST['LastName'])>15)
+		{
 			
-		echo"<script> alert(' Password must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter');</script>";
+			throw new NameException($_POST['LastName']);
+			
+		}
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+		{
+			throw new EmailException(email);
+		}
+		if(!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/",$_POST['Password']))
+		{
+				
+			throw new Exception(" Password must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter");
 
-	}
-	else if($_POST['Password']!=$_POST['ConfirmPassword'])
-	{
+		}
+		if($_POST['Password']!=$_POST['ConfirmPassword'])
+		{
+				
+			throw new Exception ("Password do not match ");
+				
+		}
+		if(!preg_match("/^\d{11}$/",$_POST['MobilePhone']))
+		{
 			
-		echo"<script> alert('Password do not match ')</script>";
+			throw new Exception("wrong mobile number ");
 			
-	}
-	
-	else if(!preg_match("/^\d{11}$/",$_POST['MobilePhone']))
-	{
+		}
+		if(!preg_match("/^\d{14}$/",$_POST['NationalID']))		//validate a number of 10 digits with no comma, no spaces, no punctuation and there will be no + sign in front the number.
+		{
+			
+			throw new Exception ("wrong National ID format");
+			
+		}
 		
-		echo"<script> alert('wrong mobile number ')</script>";
-		
-	}
-	
-	else if(!preg_match("/^\d{14}$/",$_POST['NationalID']))		//validate a number of 10 digits with no comma, no spaces, no punctuation and there will be no + sign in front the number.
-	{
-		
-		echo"<script > alert('wrong National ID format ')</script>";
-		
-	}
-	
-	else
-	{
 		$exists=FALSE;
 		$sqlErr=FALSE;
 		
@@ -95,7 +102,7 @@ if(isset($_POST['Submit'])){ //check if form was submitted
 			{
 
 				$exists=TRUE;
-				echo"<script> alert('Mobile number already exists ')</script>";
+				throw new Exception("Mobile number already exists");
 
 			}
 			else
@@ -108,7 +115,7 @@ if(isset($_POST['Submit'])){ //check if form was submitted
 					{
 				
 						$exists=TRUE;
-						echo"<script> alert('National ID already exists ')</script>";
+						throw new Exception("National ID already exists");
 
 					}
 					
@@ -130,7 +137,7 @@ if(isset($_POST['Submit'])){ //check if form was submitted
 			echo"<h1 style='background-color:white'> alert('ERROR: Could not be able to exectute $MobileSql." . mysqli_error($conn)."');</h1>";
 		
 		}
-		
+
 		if(!$sqlErr&&!$exists)
 		{
 		
@@ -148,12 +155,49 @@ if(isset($_POST['Submit'])){ //check if form was submitted
 				echo $sql;
 			}
 		}
+	
+		
 	}
+	catch (EmailException $e)
+	{
+		echo "<script>alert('".$e->errorMessage()."')</script>";
+	}
+	catch(NameException $e)
+	{
+		echo "<script>alert('".$e->errorMessage()."')</script>";
+	}
+	catch(Exception $e)
+	{
+		echo "<script>alert('".$e->getMessage()."')</script>";
+	}
+	
+	
+	
+	
 }
 
 ?>
 
+<?php
 
+class NameException extends Exception {
+  public function errorMessage() 
+  {
+    $errorMsg = $this->getMessage().'\'s Name length is invalid.';
+    return $errorMsg;
+  }
+}
+
+
+class EmailException extends Exception {
+  public function errorMessage() 
+  {
+    $errorMsg = $this->getMessage().' is not a valid E-Mail address.';
+    return $errorMsg;
+  }
+}
+
+?>
 
 <style>
 #myform{
