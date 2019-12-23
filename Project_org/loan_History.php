@@ -22,24 +22,8 @@ include "TopBar.php";
 <?php 
 include ("database.php");
 
-if(isset($_POST['Save']))
-{ 
-	try
-	{
-		if(empty($_POST['Amount_tx'])||empty($_POST['Salary_tx'])||empty($_POST['Id_tx']))
-		{
-			throw new Exception(("Please fill the required data"));
-		}
-		if($_POST['Amount_tx']>500000||$_POST['Amount_tx']<20000)
-		{
-			throw new AmountException($_POST['Amount_tx']);
-		}
-		if($_POST['Salary_tx']<0)
-		{
-			throw new AmountException($_POST['Salary_tx']);
+if(isset($_POST['Save'])){ 
 
-		}
-		
 		$sql2="UPDATE request_loan SET Amount='".$_POST['Amount_tx']."' ,Loan_Status='".'Waiting'."', Salary='".$_POST['Salary_tx']."'WHERE Request_Number='".$_POST['Id_tx']."'AND (Loan_Status = '".'Waiting'."' OR Loan_Status = '".'Refused'."')"; 
 		
 		$result=mysqli_query($conn,$sql2);
@@ -55,27 +39,8 @@ if(isset($_POST['Save']))
 			echo "Edit Failed";
 		}
 	
-	}
-	catch (AmountException $e)
-	{
-		echo "<script>alert('".$e->errorMessage()."')</script>";
-	}
-	catch(Exception $e)
-	{
-		echo "<script>alert('".$e->getMessage()."')</script>";
-	}
 }
 
-?>
-
-<?php
-class AmountException extends Exception {
-  public function errorMessage() 
-  {
-    $errorMsg = $this->getMessage().' is not a valid Amount of money.';
-    return $errorMsg;
-  }
-}
 ?>
 <script>
 $(document).ready(function (){

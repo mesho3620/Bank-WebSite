@@ -1,21 +1,9 @@
 <?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
-
 session_start();
 ob_start();
 include ("database.php");
 
 if(isset($_POST['Login'])){ //check if form was submitted
-
-	$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-
 	$sql="SELECT * FROM users where Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
 	$result = mysqli_query($conn,$sql);		
 	if($row=mysqli_fetch_array($result))	
@@ -50,6 +38,7 @@ if(isset($_POST['Login'])){ //check if form was submitted
 <head>
 <title>First National Bank - FNB</title>
 <link rel="icon" type="image/png" href="Pictures&Videos\Untitled-1.png"/>
+
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -208,8 +197,7 @@ if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 
 else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	echo "<b  id='header'>First National Bank</b>";
-	echo"<a href='../project_org/error log.php'>Error Log</a>";
-	echo"<a href='../project_org/search.php'>Search</a>";
+	echo "<a href='../project_org/search.php'>Search</a>";
 	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
@@ -245,11 +233,7 @@ else{
 	echo"<input type='button' value='Login' style='background-color:008b8b; cursor:pointer; border:none; color:white; float:right;' id='Login_Button' >";	
 }
 ?>
-<?php /*
-<div class="container">
-<a href="#" class="button">login</a>
-</div>
-*/?>
+
 
 <div class="popup">
 		<div class="popup-content">
