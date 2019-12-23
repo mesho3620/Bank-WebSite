@@ -97,7 +97,7 @@ if (mysqli_num_rows($result) > 0) {
 		}
 		catch (Exception $e)
 		{
-			echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 		}
 			
 		

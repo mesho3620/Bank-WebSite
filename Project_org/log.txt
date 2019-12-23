@@ -1,3 +1,4 @@
+
 [20-Dec-2019 00:48:24 Europe/Berlin] PHP Warning:  fopen(log.txt): failed to open stream: No such file or directory in C:\xampp\htdocs\project_org\error log.php on line 16
 [20-Dec-2019 13:35:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function allocate_new_foo() in C:\xampp\htdocs\project_org\error log.php:185
 Stack trace:
@@ -14,3 +15,48 @@ Stack trace:
 [20-Dec-2019 16:43:20 Europe/Berlin] PHP Fatal error:  require(): Failed opening required 'dataase.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\project_org\displayLoan.php on line 15
 [20-Dec-2019 16:57:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$username' (T_VARIABLE) in C:\xampp\htdocs\project_org\database.php on line 13
 [20-Dec-2019 16:58:08 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$dbname' (T_VARIABLE) in C:\xampp\htdocs\project_org\database.php on line 15
+[23-Dec-2019 20:40:25 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:25 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:43 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:43 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:43 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:43 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:59 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:59 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:40:59 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:13 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:13 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:13 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:13 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:28 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:28 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:28 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:41:28 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:23 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:23 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:35 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:35 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:35 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:43:35 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 124
+[23-Dec-2019 20:54:50 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:54:50 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:03 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:03 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:19 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:19 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:19 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:32 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:55:32 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:01 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:12 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:12 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:12 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:31 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:31 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:44 Europe/Berlin] PHP Warning:  include(BottomBar2.php): failed to open stream: No such file or directory in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+[23-Dec-2019 20:56:44 Europe/Berlin] PHP Warning:  include(): Failed opening 'BottomBar2.php' for inclusion (include_path='E:\Programs\XAMPP\php\PEAR') in E:\Programs\XAMPP\htdocs\Project_org\loan_History.php on line 159
+
