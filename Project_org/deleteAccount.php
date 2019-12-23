@@ -24,7 +24,7 @@ try
 	}
 catch (Exception $e)
 {
-	echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 }
 
 		

@@ -226,11 +226,11 @@ if(isset($_POST['Send'])){
 	}
 	catch(EmailException $e)
 	{
-		echo $e->errorMessage();
+		echo "<script>alert('".$e->errorMessage()."')</script>";
 	}
 	catch(Exception $e)
 	{
-		echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 
 	}	
 }

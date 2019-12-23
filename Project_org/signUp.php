@@ -151,15 +151,15 @@ if(isset($_POST['Submit'])){ //check if form was submitted
 	}
 	catch (EmailException $e)
 	{
-		echo $e->errorMessage();
+		echo "<script>alert('".$e->errorMessage()."')</script>";
 	}
 	catch(NameException $e)
 	{
-		echo $e->errorMessage();
+		echo "<script>alert('".$e->errorMessage()."')</script>";
 	}
 	catch(Exception $e)
 	{
-		echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 	}
 	
 	

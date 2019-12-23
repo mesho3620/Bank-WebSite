@@ -121,11 +121,11 @@ if(isset($_POST['Save'])){
 	}
 	catch(SqlException $e)
 	{
-		echo $e->errorMessage();
+		echo "<script>alert('".$e->errorMessage()."')</script>";
 	}
 	catch(Exception $e)
 	{
-		echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 	}
 
 }

@@ -33,6 +33,11 @@ if(isset($_POST['Confirm_request'])){
 		{
 			throw new Exception("Salary cant be left empty");
 		}
+		if($_POST['Salary_tx']<0)
+		{
+			throw new AmountException($_POST['Amount_tx']);
+
+		}
 		
 		$img=$_FILES['image']['name'];
 		$sql="INSERT INTO request_loan (FullName,Email,Mobile_Phone,National_ID,Address,Job,Loan_Status,Amount,Salary,HR_letter,National_ID_Photo) 
@@ -67,11 +72,11 @@ if(isset($_POST['Confirm_request'])){
 	}
 	catch (AmountException $e)
 	{
-		echo $e->errorMessage();
+		echo "<script>alert('".$e->errorMessage()."')</script>";
 	}
 	catch(Exception $e)
 	{
-		echo $e->getMessage();
+		echo "<script>alert('".$e->getMessage()."')</script>";
 	}
 
 }
