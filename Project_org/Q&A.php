@@ -1,3 +1,16 @@
+
+<?php
+ini_set('display_errors',0);
+ini_set('track_errors',1);
+ini_set('display_startup_errors',1);
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/log.txt');	
+error_reporting(-1);
+error_reporting(E_ALL | E_STRICT);
+
+include ("database.php");
+?>
+
 <head>
 <title>First National Bank - Ask us</title>
 <link rel="icon" type="image/png" href="Pictures&Videos/Untitled-1.png"/>
@@ -6,9 +19,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<?php
-include ("database.php");
-?>
 
 <?php
 
