@@ -24,12 +24,30 @@ include ("database.php");
 
 if(isset($_POST['Save']))
 { 
+
+
+	
 	try
 	{
-		if(empty($_POST['Amount_tx'])||empty($_POST['Salary_tx'])||empty($_POST['Id_tx']))
+		if(empty($_POST['Id_tx'])||(empty($_POST['Salary_tx'])&&empty($_POST['Amount_tx'])))
 		{
 			throw new Exception(("Please fill the required data"));
 		}
+		else
+		{
+			$oldAmount=$_SESSION['Amount'];
+			$oldSalary=$_SESSION['Salary'];	
+		}
+
+		if(empty($_POST['Salary_tx']))
+		{
+			$_POST['Salary_tx']=$oldSalary;
+		}
+		else if(empty($_POST['Amount_tx']))
+		{
+			$_POST['Amount_tx']=$oldAmount;
+		}
+		
 		if($_POST['Amount_tx']>500000||$_POST['Amount_tx']<20000)
 		{
 			throw new AmountException($_POST['Amount_tx']);
