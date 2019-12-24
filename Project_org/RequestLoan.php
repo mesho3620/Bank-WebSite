@@ -4,50 +4,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
-
 include "TopBar.php"
 ?>
 
 <?php
 
 include ("database.php");
+$ErrorMessageAmount="";
+$ErrorMessageHRLetter="";
 
 if(isset($_POST['Confirm_request'])){ 
 
-	try
-	{
-		$_POST['HR_letter_tx']=filter_var($_POST['HR_letter_tx'], FILTER_SANITIZE_STRING);
-	
-		if(empty($_POST['HR_letter_tx']))
-		{
-			throw new Exception("HR letter cant bet left empty");
-		}
-		if(empty($_POST['Amount_tx']))
-		{
-			throw new Exception("Amount cant bet left empty");
-		}	
-		if($_POST['Amount_tx']>500000||$_POST['Amount_tx']<20000)
-		{
-			throw new AmountException($_POST['Amount_tx']);
-		}
-		if(empty($_POST['Salary_tx']))
-		{
-			throw new Exception("Salary cant be left empty");
-		}
-		if($_POST['Salary_tx']<0)
-		{
-			throw new AmountException($_POST['Amount_tx']);
 
-		}
-		
+	if(empty($_POST['HR_letter_tx']))
+	{
+		echo "<script>"."alert('Fill the HR letter.')"."</script>";
+	}
+	
+	else if($_POST['Amount_tx']>500000)
+	{
+		echo "<script>"."alert('Amount is bigger than 500.000.')"."</script>";
+	}
+	
+	else if($_POST['Amount_tx']<20000)
+	{
+		echo "<script>"."alert('Amount is lower than 20.000.')"."</script>";
+	}
+	
+	else
+	{
 		$img=$_FILES['image']['name'];
 		$sql="INSERT INTO request_loan (FullName,Email,Mobile_Phone,National_ID,Address,Job,Loan_Status,Amount,Salary,HR_letter,National_ID_Photo) 
 		values 
@@ -77,30 +62,10 @@ if(isset($_POST['Confirm_request'])){
 			echo $sql;
 
 		}
-
 	}
-	catch (AmountException $e)
-	{
-		echo "<script>alert('".$e->errorMessage()."')</script>";
-	}
-	catch(Exception $e)
-	{
-		echo "<script>alert('".$e->getMessage()."')</script>";
-	}
-
 }
 
 
-?>
-
-<?php
-class AmountException extends Exception {
-  public function errorMessage() 
-  {
-    $errorMsg = $this->getMessage().' is not a valid Amount of money.';
-    return $errorMsg;
-  }
-}
 ?>
 
 <style>

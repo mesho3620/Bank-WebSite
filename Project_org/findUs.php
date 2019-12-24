@@ -48,15 +48,6 @@
 <body>
 
 <?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
-
 include "TopBar.php";
 ?>
 
@@ -67,66 +58,20 @@ include "database.php";
 
 if(isset($_POST['Send'])){ 
 
-	try
-	{
-		
-		$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-		$_POST['FullName']=filter_var($_POST['FullName'], FILTER_SANITIZE_STRING);
-		$_POST['Message_tx']=filter_var($_POST['Message_tx'], FILTER_SANITIZE_STRING);
-		
-		if(empty($_POST['Email'])||empty($_POST['FullName'])||empty($_POST['Message_tx']))
-		{
-			throw new Exception("Please Fill the Required Data to submit your message");
-		}
-		
-		if(filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL) === FALSE)
-		{
-			throw new EmailException($_POST['Email']);
-		}
-		
-		$emailSql="select * from users where Email='".$_POST['Email']."'";
-		$result=mysqli_query($conn,$emailSql);
-		if(!$result)
-		{
-			throw new EmailException($_POST['Email']);
+
+$sql1="INSERT INTO messsage_us (FullName,Email,Message_Tx) 
+values ('".$_POST['FullName']."','".$_POST['Email']."','".$_POST['Message_tx']."')";
+	
+
+	$result=mysqli_query($conn,$sql1);
+	if($result){
+		header("Location:homePage.php");
 		}
 
-		$sql1="INSERT INTO messsage_us (FullName,Email,Message_Tx) 
-		values ('".$_POST['FullName']."','".$_POST['Email']."','".$_POST['Message_tx']."')";
-		
+	else{
+			echo $sql1;
+		}
 
-		$result=mysqli_query($conn,$sql1);
-		if($result){
-			header("Location:homePage.php");
-			}
-
-		else{
-				throw new Exception("Could not execute sql statement $sql");
-			}
-		
-	}
-	catch (EmailException $e)
-	{
-		echo "<script>alert('".$e->errorMessage()."')</script>";
-	}
-	catch (Exception $e)
-	{
-		echo "<script>alert('".$e->getMessage()."')</script>";
-	}
-
-
-}
-
-?>
-
-<?php
-
-class EmailException extends Exception {
-  public function errorMessage() 
-  {
-    $errorMsg = $this->getMessage().' is not a valid E-Mail address.';
-    return $errorMsg;
-  }
 }
 
 ?>

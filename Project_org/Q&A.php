@@ -1,16 +1,3 @@
-
-<?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
-include ("database.php");
-?>
-
 <head>
 <title>First National Bank - Ask us</title>
 <link rel="icon" type="image/png" href="Pictures&Videos/Untitled-1.png"/>
@@ -19,15 +6,33 @@ include ("database.php");
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
 <?php
+include ("database.php");
 
-class EmailException extends Exception {
-  public function errorMessage() 
-  {
-    $errorMsg = $this->getMessage().' is not a valid E-Mail address.';
-    return $errorMsg;
-  }
+$emailError="";
+
+if(isset($_POST['Send'])){ 
+	if(empty($_POST['Email_msg']))
+	{
+		$emailError="Email is required";
+	}
+
+	else
+	{
+		$sql1="INSERT INTO qanda (Email,Question) 
+		values ('".$_POST['Email_msg']."','".$_POST['question']."')";
+		
+		$result=mysqli_query($conn,$sql1);
+		if($result)	
+		{
+			
+			header("Location:homePage.php");
+		}
+		else
+		{
+			echo $sql1;
+		}
+	}
 }
 
 ?>
@@ -106,7 +111,7 @@ include "TopBar.php";
 ?>
 
 <div id="Questions">
-<h1 style="text-decoration:underline">Q&A </h1>
+<h1 style="text-decoration:underline; color:white;">Q&A </h1>
 <b>Question 1</b> 
 <br>
 <br>
@@ -201,51 +206,7 @@ include "TopBar.php";
 
 <input type="Submit" value="Send" name="Send">
 <br><br>
-<?php 
-
-
-if(isset($_POST['Send'])){ 
-
-	try 
-	{
-			$_POST['Email_msg']=filter_var($_POST['Email_msg'], FILTER_SANITIZE_EMAIL);
-			$_POST['question']=filter_var($_POST['question'], FILTER_SANITIZE_STRING);
-
-		if(empty($_POST['Email_msg']))
-		{
-			throw new Exception("Email address cant be left empty");
-		}
-		if(filter_var($_POST['Email_msg'], FILTER_VALIDATE_EMAIL) === FALSE)
-		{
-			throw new EmailException($_POST['Email_msg']);
-		}
-			
-		
-		$sql1="INSERT INTO qanda (Email,Question) 
-		values ('".$_POST['Email_msg']."','".$_POST['question']."')";
-		
-		$result=mysqli_query($conn,$sql1);
-		if($result)	
-		{
-			header("Location:homePage.php");
-		}
-		else
-		{
-			echo $sql1;
-		}
-	}
-	catch(EmailException $e)
-	{
-		echo "<script>alert('".$e->errorMessage()."')</script>";
-	}
-	catch(Exception $e)
-	{
-		echo "<script>alert('".$e->getMessage()."')</script>";
-
-	}	
-}
-
-?>
+<?php echo $emailError?>
 <br><br>
 
 
