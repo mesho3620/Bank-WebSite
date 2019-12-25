@@ -43,9 +43,9 @@ if(isset($_POST['Save']))
 				$row=mysqli_fetch_array($result1);			
 				$oldAmount=$row['Amount'];
 				$oldSalary=$row['Salary'];
-				if($row['Loan_Status']!=='Waiting')
+				if($row['Loan_Status']!=='Waiting'&&$row['Loan_Status']!=='Reject')
 				{
-					throw new Exception ("Request can only be modified while in waiting state.");
+					throw new Exception ("Request can only be modified while in waiting/Rejected state.");
 				}
 			}
 			else
@@ -73,7 +73,7 @@ if(isset($_POST['Save']))
 
 		}
 		
-		$sql2="UPDATE request_loan SET Amount='".$_POST['Amount_tx']."' ,Loan_Status='".'Waiting'."', Salary='".$_POST['Salary_tx']."'WHERE Request_Number='".$_POST['Id_tx']."'AND Loan_Status = '".'Waiting'."'"; 
+		$sql2="UPDATE request_loan SET Amount='".$_POST['Amount_tx']."' ,Loan_Status='".'Waiting'."', Salary='".$_POST['Salary_tx']."'WHERE Request_Number='".$_POST['Id_tx']."'"; 
 		
 		$result=mysqli_query($conn,$sql2);
 		

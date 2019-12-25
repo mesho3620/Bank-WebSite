@@ -1,15 +1,14 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
 
 $connection = mysqli_connect("localhost","root","","loanproject");
-$term = $_POST['term'];
+$term = filter_var($_POST['term'], FILTER_SANITIZE_STRING);
 $sql = "SELECT User_ID, FirstName , LastName , Email, Mobile_Phone, National_ID, Address, Job, Status
         FROM users ";
 if(!empty($term))
@@ -20,7 +19,7 @@ if(!empty($term))
 
    
 echo "
-      <table style = 'color: white; background-color: black' border=2 width=100%>
+      <table class='table table-bordered' style = 'color: white; background-color: black' border=2 width=100%>
       <tr>
 	  <th>ID</th>
       <th>First Name</th>

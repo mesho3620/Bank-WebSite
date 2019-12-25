@@ -9,15 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script></head>
 <?php
-ini_set('display_errors',0);
-ini_set('track_errors',1);
-ini_set('display_startup_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');	
-error_reporting(-1);
-error_reporting(E_ALL | E_STRICT);
-
-
 include "TopBar.php";
 ?>
 
@@ -199,6 +190,8 @@ class EmailException extends Exception {
 
 ?>
 
+
+
 <style>
 #myform{
 	
@@ -210,7 +203,7 @@ class EmailException extends Exception {
 	border-color:black;
 	border-width:thin;
 	padding:1%;
-	background-color:f4f7f8;
+	background-color:white;
 	color:black;
 }
 
@@ -335,11 +328,11 @@ input[type=password] {
 
 <br><br>
 
-<input type="Reset" style="background-color:orange; border:none; cursor:pointer;">
+<input type="Reset" style="background-color:darkorange; border:none; cursor:pointer;">
 
 <br><br>
 
-<input type="Submit" name="Submit" style="background-color:orange; border:none;width:100%; height:5%; cursor:pointer;" Value="Sign Up">
+<input type="Submit" name="Submit" style="background-color:darkcyan; border:none;width:100%; height:5%; cursor:pointer;" Value="Sign Up">
 
 <br><br>
 <?php echo $emailError; ?>
@@ -348,8 +341,7 @@ input[type=password] {
 </form>
 
 </body>
-
+</html>
 <?php
 include "BottomBar.php";
 ?>
-</html>

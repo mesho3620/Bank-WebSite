@@ -1,12 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
 session_start();
 ob_start();
 include ("database.php");
 
 if(isset($_POST['Login'])){ //check if form was submitted
-
-	$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-
 	$sql="SELECT * FROM users where Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
 	$result = mysqli_query($conn,$sql);		
 	if($row=mysqli_fetch_array($result))	
@@ -38,11 +42,14 @@ if(isset($_POST['Login'])){ //check if form was submitted
 }
 			
 ?>
+
 <head>
+   
 <title>First National Bank - FNB</title>
 <link rel="icon" type="image/png" href="Pictures&Videos\Untitled-1.png"/>
-</head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
 <script>
 $(document).ready(function (){
 	
@@ -61,51 +68,15 @@ $(".popup").toggle();
 });
 </script>
 <style>
-h1{
-	margin-top:1%;
-	margin-left:
-}
-.topnav{
-	background-color:black;
-	color:white;
-	padding: 1%;
-}
 
-.topnav a{
-text-decoration:none;	
-float:right;
-color:white;
-font-size: 125%;
-margin-right:2%;
-margin-top:1%;
-}
-
-.topnav a:hover{
-	color:orange;
-}
-.topnav a:active{
-	color:lightblue;
-}
-
-.topnav2{
-	background-color:008b8b;
-	padding: 0.1% 0.1%;
-	color:white;
-}
-
-.topnav2 a{
-color:white;
-text-decoration:none;	
-font-size:100%;
-margin-left:1%;
-float:right;
-}
 
 #header
 {
 	font-size:200%;
 	color:white;
-	margin-left:1%;
+	margin-top:-1%;
+	margin-right: 70%;
+	margin-left: -2.5%;
 }
 .container
 {
@@ -174,76 +145,89 @@ float:right;
 	border-radius:50%;
 	cursor:pointer;
 }
-#frgt{
-	position:absolute;
-	top:70%;
-	left:10%;
-	text-decoration:underline;
-	color:darkorange;
-}
+
 </style>
 
 
 
-<div class="topnav">
-<img src="Pictures&Videos/Untitled-1.png" width=4% height=7%> 
+<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a id="header" class="navbar-brand" href="homePage.php">
+		  <b><img src="Pictures&Videos/Untitled-1.png" width=15% height=200%> First National Bank</b>
+		  </a>
+</div>
+ 
 <?php
 
 if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 {
-
-	echo "<b  id='header'>First National Bank</b>";
-	echo"<a href='../project_org/Q&A.php'>Q&A</a>";	
-	echo"<a href='../project_org/findUs.php'>Find us</a>";																															
-	echo"<a href='../project_org/contactUs.php'>Contact us</a>";
-	echo"<a href='../project_org/aboutUs.php'>About us</a>";
-	echo"<a href='../project_org/RequestLoan.php'>Request Loan</a>";
-	echo"<a href='../project_org/loan_History.php'>Loan History</a>";
-	echo"<a href='../project_org/Profile.php'>Profile</a>";
-	echo"<a href='../project_org/homePage.php'>Home</a>";
+	
+	?>
+	<ul style = "margin-top: -2.5%;" class="nav navbar-nav navbar-right">
+	
+	<li><a href='../project_org/homePage.php'> Home</a></li>
+	<li><a href='../project_org/Q&A.php'> Q&A  </a></li>	
+	<li><a href='../project_org/findUs.php'> Find us</a></li>																															
+	<li><a href='../project_org/contactUs.php'> Contact us</a></li>
+	<li><a href='../project_org/aboutUs.php'> About us</a></li>
+	<li><a href='../project_org/RequestLoan.php'> Request Loan</a></li>
+	<li><a href='../project_org/loan_History.php'> Loan History</a></li>
+	<li><a href='../project_org/Profile.php'> Profile</a></li>
+	<li><a href='../project_org/signOut.php'><span class='glyphicon glyphicon-log-out'></span> Sign out </a></li>
+	<li><a href='../project_org/deleteAccount.php'><span class='glyphicon glyphicon-trash'></span> Delete Account </a></li>
+	</ul>
+<?php	
 }
 
-else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
-	echo "<b  id='header'>First National Bank</b>";
-	echo "<a href='../project_org/error_log.php'>Error Log</a>";
-	echo "<a href='../project_org/search.php'>Search</a>";
-	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
-	echo"<a href='../project_org/Profile.php'>Profile</a>";
-	echo"<a href='../project_org/homePage.php'>Home</a>";
-}
 
-else{
+if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
+	?>
+	<ul class="nav navbar-nav navbar-right">
 	
-	
-	
-	echo "<b  id='header'>First National Bank</b>";
-	echo"<a href='../project_org/Q&A.php'>Q&A</a>";	
-	echo"<a href='../project_org/findUs.php'>Find us</a>";																															
-	echo"<a href='../project_org/contactUs.php'>Contact us</a>";
-	echo"<a href='../project_org/aboutUs.php'>About us</a>";
-	echo"<a href='../project_org/homePage.php'>Home</a>";
-	
+	<li><a href='../project_org/homePage.php'> Home</a></li>
+	<li><a href='../project_org/displayLoan.php'> Loans</a></li>
+	<li><a href='../project_org/Profile.php'> Profile</a></li>
+	<li><a href='../project_org/signOut.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>
+	<li><a href='../project_org/deleteAccount.php'><span class='glyphicon glyphicon-trash'></span> Delete Account</a></li>
+	</ul>
+	<?php
 }
 ?>
 
-</div>
-
-<div class="topnav2">
 
 <?php
-if(!empty($_SESSION['FullName'])){
-	echo "Welcome ".$_SESSION['FullName'];
-	echo"<a href='../project_org/deleteAccount.php'>Delete Account</a>";
-	echo"<a href='../project_org/signOut.php'>Sign out</a>";	
-}
-else{
-	echo "Welcome Guest";
-	echo"<a href='../project_org/signUp.php'>Sign up</a>";	
-	echo"<input type='button' value='Login' style='background-color:008b8b; cursor:pointer; border:none; color:white; float:right;' id='Login_Button' >";	
-}
-?>
+		if(empty($_SESSION['FullName']))
+		{	
+	
+	
+	?>
+	<ul class="nav navbar-nav navbar-right">
+	
+	<li><a href='../project_org/homePage.php'> Home</a></li>
+	<li><a href='../project_org/Q&A.php'> Q&A </a></li>	
+	<li><a href='../project_org/findUs.php'> Find us</a></li>																															
+	<li><a href='../project_org/contactUs.php'> Contact us</a></li>
+	<li><a href='../project_org/aboutUs.php'> About us</a></li>
+	<li><a href='../project_org/signUp.php'><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+	<li><input type='button' value='Login'  style='background-color:black; cursor:pointer; border:none; color:white; float:right; margin-top: 35%;' id='Login_Button' ></li>
+</ul>	
 
+<?php
+		}
+		?>
 
+<?php /*
+<div class="container">
+<a href="#" class="button">login</a>
+</div>
+*/?>
+
+</div>
+</nav>
+</head>
+
+<body>
 <div class="popup">
 		<div class="popup-content">
 		<form method="post" name="LoginFrom">
@@ -251,11 +235,10 @@ else{
 			<img src="Pictures&Videos/Untitled-1.png" width="50px">
 			<input type="text" placeholder="Email Address" id="log" name="Email">
 			<input type="password" placeholder="Password" id="log" name="Password">
+
 			<input type='Submit' class="button" value="Login" style="font-size:150%; color:orange" name="Login">
-			<a id="frgt" href="../project_org/forgetPassword.php">Forget Password</a>
 		</form>	
 	</div>
 </div>
-
-</div>
-
+</body>
+</html>
