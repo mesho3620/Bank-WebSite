@@ -328,7 +328,7 @@ input[type=password] {
 
 <br><br>
 
-<input type="Reset" style="background-color:darkorange; border:none; cursor:pointer;">
+<input type="Reset" style="background-color:white; border:none; cursor:pointer;">
 
 <br><br>
 

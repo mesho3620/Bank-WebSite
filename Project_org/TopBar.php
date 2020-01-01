@@ -197,6 +197,8 @@ if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 	echo"<a href='../project_org/findUs.php'>Find us</a>";																															
 	echo"<a href='../project_org/contactUs.php'>Contact us</a>";
 	echo"<a href='../project_org/aboutUs.php'>About us</a>";
+	echo"<a href='../project_org/inbox.php'>Inbox</a>";
+	echo"<a href='../project_org/announcement.php'>Announcement</a>";
 	echo"<a href='../project_org/RequestLoan.php'>Request Loan</a>";
 	echo"<a href='../project_org/loan_History.php'>Loan History</a>";
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
@@ -205,8 +207,19 @@ if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 
 else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	echo "<b  id='header'>First National Bank</b>";
+	echo "<a href='../project_org/search.php'>Search</a>";
+	echo"<a href='../project_org/Message_QC.php'>Message</a>";
+	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
+	echo"<a href='../project_org/Profile.php'>Profile</a>";
+	echo"<a href='../project_org/homePage.php'>Home</a>";
+}
+
+else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Quality Control"){
+	echo "<b  id='header'>First National Bank</b>";
 	echo "<a href='../project_org/error_log.php'>Error Log</a>";
 	echo "<a href='../project_org/search.php'>Search</a>";
+	echo"<a href='../project_org/Message_QC.php'>Message</a>";
+	echo"<a href='../project_org/announcement_edit.php'>Announcement</a>";
 	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
@@ -232,7 +245,7 @@ else{
 
 <?php
 if(!empty($_SESSION['FullName'])){
-	echo "Welcome ".$_SESSION['FullName'];
+	echo "Signed as ".$_SESSION['FullName'];
 	echo"<a href='../project_org/deleteAccount.php'>Delete Account</a>";
 	echo"<a href='../project_org/signOut.php'>Sign out</a>";	
 }
@@ -251,7 +264,7 @@ else{
 			<img src="Pictures&Videos/Untitled-1.png" width="50px">
 			<input type="text" placeholder="Email Address" id="log" name="Email">
 			<input type="password" placeholder="Password" id="log" name="Password">
-			<input type='Submit' class="button" value="Login" style="font-size:150%; color:orange" name="Login">
+			<input type='Submit' class="button" value="Login" style="font-size:150%; color:orange" name="Login">		
 			<a id="frgt" href="../project_org/forgetPassword.php">Forget Password</a>
 		</form>	
 	</div>

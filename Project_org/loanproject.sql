@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2019 at 04:54 PM
+-- Generation Time: Dec 27, 2019 at 05:03 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `loanproject`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messageclient`
+--
+
+CREATE TABLE `messageclient` (
+  `UserID` int(11) NOT NULL,
+  `MessageCl` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messageclient`
+--
+
+INSERT INTO `messageclient` (`UserID`, `MessageCl`) VALUES
+(12, 'hi'),
+(12, 'hi'),
+(12, 'hi');
 
 -- --------------------------------------------------------
 
@@ -53,7 +73,8 @@ CREATE TABLE `qanda` (
 
 INSERT INTO `qanda` (`Email`, `Question`, `MessageID`) VALUES
 ('hoppas98@outlook.com', 'how could I create an account?', 2),
-('hoppas98@outlook.com', '12wd', 3);
+('hoppas98@outlook.com', '12wd', 3),
+('hoppas98@outlook.com', 'ijrd9', 4);
 
 -- --------------------------------------------------------
 
@@ -83,8 +104,9 @@ CREATE TABLE `request_loan` (
 INSERT INTO `request_loan` (`FullName`, `Email`, `Mobile_Phone`, `National_ID`, `Address`, `Job`, `Loan_Status`, `Amount`, `Salary`, `HR_letter`, `Request_Number`, `National_ID_Photo`) VALUES
 ('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'elshorouk', 'Manager', 'Accept', '500000', '200', 'df jnvn', 21, '1.jpg'),
 ('Omar Adel', 'omar@yahoo.com', '01009210095', '12345678912346', 'Elshoroul', 'TA', 'Accept', '50000', '5000', 'kfmsk', 26, 'Screenshot (110).png'),
-('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'elshorouk', 'Manager', 'Reject', '20000', '8000', 'nkjojlk', 27, 'Screenshot (110).png'),
-('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'elshorouk', 'TA', 'Accept', '50000', '2000', 'nmgho', 28, 'Screenshot (110).png');
+('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'elshorouk', 'Manager', 'Waiting', '25000', '8000', 'nkjojlk', 27, 'Screenshot (110).png'),
+('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'elshorouk', 'TA', 'Reject', '50000', '2000', 'nmgho', 28, 'Screenshot (110).png'),
+('Mohamed Hoppas', 'hoppas98@outlook.com', '01004540095', '12345678912344', 'madinty', 'TA', 'Accept', '20000', '5000', 'jfjd', 29, '1.jpg');
 
 -- --------------------------------------------------------
 
@@ -110,7 +132,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`User_ID`, `FirstName`, `LastName`, `Email`, `Password`, `Mobile_Phone`, `National_ID`, `Address`, `Job`, `Status`) VALUES
-(12, 'Mohamed', 'Hoppas', 'hoppas98@outlook.com', '123', '01004540095', '12345678912344', 'elshorouk', 'TA', 'Client'),
+(12, 'Mohamed', 'Hoppas', 'hoppas98@outlook.com', '123', '01004540095', '12345678912344', 'madinty', 'TA', 'Client'),
 (13, 'Mohamed', 'Adel', 'mohamed@manager.com', '123', '01004540092', '12345678987569', 'Elshorouk', 'Manager', 'Manager');
 
 --
@@ -155,13 +177,13 @@ ALTER TABLE `message_us`
 -- AUTO_INCREMENT for table `qanda`
 --
 ALTER TABLE `qanda`
-  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `request_loan`
 --
 ALTER TABLE `request_loan`
-  MODIFY `Request_Number` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Request_Number` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
