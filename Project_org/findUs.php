@@ -42,6 +42,8 @@
 #picmsg
 {
 	background:url(Pictures&Videos/aerial-view-of-expressway-1720029.jpg) no-repeat center ;
+	border-style:solid;
+	
 }
 
 </style>
@@ -160,23 +162,23 @@ class EmailException extends Exception {
 </div>
 
 <div id="picmsg">
-<h2 style="text-decoration:underline;">Message Us</h2>
+<h2 style="text-decoration:underline; margin-left: 1%;">Message Us</h2>
 
-<form id="MessageForm" method="post">
-Name <br>
+<form style=" margin-left: 1%;" method="post">
+<b> Name</b> <br>
 <input type='text' placeholder="FullName" name="FullName">
 
 <br>
 <br>
 
-Email <br>
+<b> Email</b> <br>
 <input type='Email' placeholder="Enter your email address" name="Email">
 
 <br>
 <br>
 
-Message <br>
-<textarea rows="4" cols="50" name="Message_tx"></textarea>
+<b> Message</b> <br>
+<textarea rows="4" cols="50" placeholder="Write your message here" name="Message_tx"></textarea>
 
 <br>
 <br>

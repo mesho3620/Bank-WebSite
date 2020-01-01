@@ -120,6 +120,8 @@ $(document).ready(function(){
   border-style: solid ;
   border-width: 1%;
   padding-left:1%; 
+  background-color: #404040;
+  margin-bottom: 0%;
  
 }
 #Questions{
@@ -143,91 +145,91 @@ include "TopBar.php";
 
 <div id="Questions">
 <h1 style="text-decoration:underline; color:white;">Q&A </h1>
-<b>Question 1</b> 
+<b style='color:white;'>How to create an account?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show1" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer1" style="display:none;">Answer 1</p>
+<p id="Answer1" style="display:none; color:Darkorange;">Go to the top of the page and press (sign up button > fill the form > Press 'Submit').</p>
 <br>
 <br>
 
-<b>Question 2</b> 
+<b>How to login?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show2"  style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer2" style="display:none;">Answer</p>
+<p id="Answer2" style="display:none; color:Darkorange;">Go to the top of the page and press login button.</p>
 <br>
 <br>
 
-<b>Question 3</b> 
+<b>What to do if you forget your password?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show3" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer3" style="display:none;">Answer</p>
+<p id="Answer3" style="display:none; color:Darkorange;">Go to the top of the page and press login > forget password   </p>
 <br>
 <br>
 
-<b>Question 4</b> 
+<b>How to sign out?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show4" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer4" style="display:none;">Answer</p>
+<p id="Answer4" style="display:none; color:Darkorange;">Go to the top of the page and press sign out button.</p>
 <br>
 <br>
 
-<b>Question 5</b>
+<b>How to request a loan?</b>
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show5" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer5" style="display:none;">Answer</p>
+<p id="Answer5" style="display:none; color:Darkorange;">Go to the top of the page and (press request loan button > read the announcemenet > fill the form).</p>
 <br>
 <br>
 
-<b>Question 6</b> 
+<b>How to update/see your profile?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show6" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer6" style="display:none;">Answer</p>
+<p id="Answer6" style="display:none; color:Darkorange;">Go to the top of the page and press profile button,</p>
 <br>
 <br>
 
-<b>Question 7</b>
+<b>How to check your loan's request?</b>
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show7" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer7" style="display:none;">Answer</p>
+<p id="Answer7" style="display:none; color:Darkorange;">Go to the top of the page and press loan history button,</p>
 <br>
 <br>
 
-<b>Question 8</b> 
+<b>What is the functionality of the inbox page?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show8" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer8" style="display:none;">Answer</p>
+<p id="Answer8" style="display:none; color:Darkorange;">The functionality of the inbox page is that the quality control send to the client a message.</p>
 <br>
 <br>
 
-<b>Question 9</b> 
+<b>What is the functionality of the announcement page?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show9" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer9" style="display:none;">Answer</p>
+<p id="Answer9" style="display:none; color:Darkorange;">The functionality of the announcement page is that the quality control announces to the clients a post.</p>
 <br>
 <br>
 
-<b>Question 10</b> 
+<b>How to delete your account?</b> 
 <br>
 <br>
 <input type="button" value="Show/Hide answer" id="show10" style="border-radius: 10%; background-color:white; border:none;">
-<p id="Answer10" style="display:none;">Answer</p>
+<p id="Answer10" style="display:none; color:Darkorange;">Go to the top of the page and press delete account.</p>
 <br>
 <br>
 </div>
 
 <form id="QuestionForm" method="post" name="QuestionForm">
-<h3 style="text-decoration:underline;">Question</h3>
+<h2 style="text-decoration:underline; color:white;">Any questions?</h2>
 
-<input type"Email" placeholder="Enter your Email" name="Email_msg">
+<input type="Email" placeholder="Enter your Email" name="Email_msg">
 
 <br><br>
 
@@ -238,11 +240,7 @@ include "TopBar.php";
 <input type="Submit" value="Send" name="Send">
 <br><br>
 
-<br><br>
-
-
 </form>
-
 <?php
 include "BottomBar.php";
 ?>
