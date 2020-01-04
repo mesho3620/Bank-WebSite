@@ -188,11 +188,30 @@ if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	<li><a href='../project_org/homePage.php'> Home</a></li>
 	<li><a href='../project_org/displayLoan.php'> Loans</a></li>
 	<li><a href='../project_org/Profile.php'> Profile</a></li>
+	<li><a href='../project_org/announcement.php'> Announcment</a></li>
+	<li><a href='../project_org/Message_QC.php'> Message</a></li>
+	<li><a href='../project_org/search.php'> Search</a></li>
+	<li><a href='../project_org/error_log.php'> Error Log</a></li>
 	<li><a href='../project_org/signOut.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>
-	<li><a href='../project_org/deleteAccount.php'><span class='glyphicon glyphicon-trash'></span> Delete Account</a></li>
 	</ul>
 	<?php
 }
+
+if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Quality Control"){
+	?>
+	<ul class="nav navbar-nav navbar-right">
+	
+	<li><a href='../project_org/homePage.php'> Home</a></li>
+	<li><a href='../project_org/Profile.php'> Profile</a></li>
+	<li><a href='../project_org/announcement_edit.php'> Announcment</a></li>
+	<li><a href='../project_org/Message_QC.php'> Message</a></li>
+	<li><a href='../project_org/search.php'> Search</a></li>
+	<li><a href='../project_org/error_log.php'> Error Log</a></li>
+	<li><a href='../project_org/signOut.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>
+	</ul>
+	<?php
+}
+
 ?>
 
 

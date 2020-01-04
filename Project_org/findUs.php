@@ -125,7 +125,7 @@ class EmailException extends Exception {
 ?>
 
 
-<div class="findus">
+<div class="findus"style="background-color:lightgray;">
 
 
 

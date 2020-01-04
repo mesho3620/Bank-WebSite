@@ -1,5 +1,5 @@
 <?php
-include("TopBar.php");
+include("TopBar2.php");
 ?>
 <head>
 <title>First National Bank - FNB</title>
@@ -46,7 +46,7 @@ include("TopBar.php");
 <div style = "background-color: lightgrey">
 	<div class = "Search-Back">
 
-       <h1>Search for Clients/Employees info :</h1>
+       <h1>Search for Clients info :</h1>
 	   <br>
 
     <input type="search" name="term" id="term" onkeyup="getRes()" class="form-control" style="width:30%;">

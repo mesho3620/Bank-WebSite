@@ -75,8 +75,10 @@ fclose($myfile);
 <br>
 
 <form class="form" method='post'>
-<textarea rows="25" cols="50" style="width:50%;" placeholder="Write the new announcement." name='Announcement'></textarea>
 <br>
+<textarea rows="20" cols="50" style="width:50%;" placeholder="Write the new announcement." name='Announcement'></textarea>
+<br>
+<br>p
 <input type='submit' name='Submit'>
 
 </form>

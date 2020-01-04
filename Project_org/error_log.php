@@ -1,5 +1,5 @@
 <?php
-include("TopBar.php");
+include("TopBar2.php");
 ?>
 <html>
 <body>
@@ -41,3 +41,4 @@ fclose($myfile);
 </div>
 </body>
 </html>
+<?php include("BottomBar2.php");

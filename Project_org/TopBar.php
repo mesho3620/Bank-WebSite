@@ -2,20 +2,26 @@
 session_start();
 ob_start();
 include ("database.php");
-
 if(isset($_POST['Login'])){ //check if form was submitted
-
 	$_POST['Email']=filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
-
 	$sql="SELECT * FROM users where Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
 	$result = mysqli_query($conn,$sql);		
-	if($row=mysqli_fetch_array($result))	
-	{
+	if($row=mysqli_fetch_array($result)){	
+	
+		if(!empty($_POST["remember"])) 
+		{
+			$days = 30;
+			setcookie ("loginId", $_POST['Email'], time()+ ($days * 24 * 60 * 60 * 1000));  
+			setcookie ("loginPass",	$_POST['Password'],	time()+ ($days * 24 * 60 * 60 * 1000));
+		} 
+		else 
+		{
+			setcookie ("loginId",""); 
+			setcookie ("loginPass","");
+		}
+	
 		$_SESSION["ID"]=$row["User_ID"];
-		$_SESSION["FullName"]=$row["FirstName"]." ".$row["LastName"];
-		
-/*Just Added*/
-/*-----------------------------------------------------------------------*/
+	
 		$_SESSION["FullName"]=$row["FirstName"]." ".$row["LastName"];
 		$_SESSION["FirstName"]=$row["FirstName"];
 		$_SESSION["LastName"]=$row["LastName"];
@@ -26,10 +32,8 @@ if(isset($_POST['Login'])){ //check if form was submitted
 		$_SESSION["Address"]=$row["Address"];
 		$_SESSION["Job"]=$row["Job"];
 		$_SESSION["Status"]=$row["Status"];	
-/*-----------------------------------------------------------------------*/
+
 		header("Location:homePage.php");
-
-
 	}
 	else	
 	{
@@ -57,7 +61,6 @@ $(".popup").hide();
 $("#Login_Button").on('click',function(){
 $(".popup").toggle();
 });
-
 });
 </script>
 <style>
@@ -70,7 +73,6 @@ h1{
 	color:white;
 	padding: 1%;
 }
-
 .topnav a{
 text-decoration:none;	
 float:right;
@@ -79,20 +81,17 @@ font-size: 125%;
 margin-right:2%;
 margin-top:1%;
 }
-
 .topnav a:hover{
 	color:orange;
 }
 .topnav a:active{
 	color:lightblue;
 }
-
 .topnav2{
 	background-color:008b8b;
 	padding: 0.1% 0.1%;
 	color:white;
 }
-
 .topnav2 a{
 color:white;
 text-decoration:none;	
@@ -100,7 +99,6 @@ font-size:100%;
 margin-left:1%;
 float:right;
 }
-
 #header
 {
 	font-size:200%;
@@ -188,10 +186,8 @@ float:right;
 <div class="topnav">
 <img src="Pictures&Videos/Untitled-1.png" width=4% height=7%> 
 <?php
-
 if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 {
-
 	echo "<b  id='header'>First National Bank</b>";
 	echo"<a href='../project_org/Q&A.php'>Q&A</a>";	
 	echo"<a href='../project_org/findUs.php'>Find us</a>";																															
@@ -204,7 +200,6 @@ if(!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Client")
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
 }
-
 else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	echo "<b  id='header'>First National Bank</b>";
 	echo "<a href='../project_org/search.php'>Search</a>";
@@ -213,18 +208,15 @@ else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Manager"){
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
 }
-
 else if (!empty($_SESSION['FullName']) && $_SESSION["Status"]=="Quality Control"){
 	echo "<b  id='header'>First National Bank</b>";
 	echo "<a href='../project_org/error_log.php'>Error Log</a>";
 	echo "<a href='../project_org/search.php'>Search</a>";
 	echo"<a href='../project_org/Message_QC.php'>Message</a>";
 	echo"<a href='../project_org/announcement_edit.php'>Announcement</a>";
-	echo"<a href='../project_org/displayLoan.php'>Loans</a>";
 	echo"<a href='../project_org/Profile.php'>Profile</a>";
 	echo"<a href='../project_org/homePage.php'>Home</a>";
 }
-
 else{
 	
 	
@@ -246,7 +238,10 @@ else{
 <?php
 if(!empty($_SESSION['FullName'])){
 	echo "Signed as ".$_SESSION['FullName'];
+	if($_SESSION["Status"]=="Client"){
 	echo"<a href='../project_org/deleteAccount.php'>Delete Account</a>";
+	}
+
 	echo"<a href='../project_org/signOut.php'>Sign out</a>";	
 }
 else{
@@ -262,8 +257,11 @@ else{
 		<form method="post" name="LoginFrom">
 			<img src="Pictures&Videos/images.png" id="close" width="30px">
 			<img src="Pictures&Videos/Untitled-1.png" width="50px">
-			<input type="text" placeholder="Email Address" id="log" name="Email">
-			<input type="password" placeholder="Password" id="log" name="Password">
+			<input type="text" placeholder="Email Address" id="log" value="<?php if(isset($_COOKIE["loginId"])) { echo $_COOKIE["loginId"]; } ?>" name="Email">
+			<input type="password" placeholder="Password" id="log" value="<?php if(isset($_COOKIE["loginPass"])) { echo $_COOKIE["loginPass"]; } ?>" name="Password">
+			<div class="checkbox">
+					  <input  type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE["loginId"])) { ?> checked <?php } ?>> Remember me
+				  </div>
 			<input type='Submit' class="button" value="Login" style="font-size:150%; color:orange" name="Login">		
 			<a id="frgt" href="../project_org/forgetPassword.php">Forget Password</a>
 		</form>	
@@ -271,4 +269,3 @@ else{
 </div>
 
 </div>
-

@@ -36,67 +36,20 @@ if(isset($_POST['Save'])){
 			throw new NameException($_POST['LastName_tx']);
 			
 		}
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 									//***********************************
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
 		{
 			throw new EmailException(email);
 		}
-		if(!preg_match("/^\d{11}$/",$_POST['MobilePhone_tx']))									//***********************************
-		{
-			
-			throw new Exception("wrong mobile number ");
-			
-		}
-		if(!preg_match("/^\d{14}$/",$_POST['NationalID_tx']))		//validate a number of 10 digits with no comma, no spaces, no punctuation and there will be no + sign in front the number.
-		{
-			
-			throw new Exception ("wrong National ID format");
-			
-		}
+
 		
 		$exists=FALSE;
 		$sqlErr=FALSE;
 		
-		$MobileSql="SELECT * FROM users where Mobile_Phone ='".$_POST['MobilePhone_tx']."';";
-		$NationalIdSql="SELECT * FROM users where National_ID ='".$_POST['NationalID_tx']."';";
 
 		
 
-		if($result = mysqli_query($conn,$MobileSql))
-		{
-		
-			if(mysqli_num_rows($result)>0)
-			{
 
-				$exists=TRUE;
-				throw new Exception("Mobile number already exists");
-
-			}
-		}					
-		else
-		{
-		
-			$sqlErr=TRUE;
-			throw new SqlException($MobileSql);
-		}
-		if($result = mysqli_query($conn,$NationalIdSql))
-		{
-		
-			if(mysqli_num_rows($result)>0)
-			{
-				
-				$exists=TRUE;
-				throw new Exception("National ID already exists");
-
-			}
-					
-		}		
-		else
-		{
-			$sqlErr=TRUE;
-			throw new SqlException($NationalIdSql);
-		}
-		
-		$sql="UPDATE users set FirstName='".$_POST['FirstName_tx']."' , LastName='".$_POST['LastName_tx']."' , Email='".$_POST['Email_tx']."' , Mobile_Phone='".$_POST['MobilePhone_tx']."' , National_ID='".$_POST['NationalID_tx']."' , Job='".$_POST['Job_tx']."' , Address='".$_POST['Address_tx']."'where User_ID=".$_SESSION['ID']; 
+		$sql="UPDATE users set FirstName='".$_POST['FirstName_tx']."' , LastName='".$_POST['LastName_tx']."' , Email='".$_POST['Email_tx']."' , Job='".$_POST['Job_tx']."' , Address='".$_POST['Address_tx']."'where User_ID=".$_SESSION['ID']; 
 		
 		$result=mysqli_query($conn,$sql);
 		
@@ -158,17 +111,11 @@ $("#Email_tx").toggle();
 $("#Password_button").on('click',function(){
 $("#Password_tx").toggle();
 });
-$("#MobilePhone_button").on('click',function(){
-$("#MobilePhone_tx").toggle();
-});
 $("#Address_button").on('click',function(){
 $("#Address_tx").toggle();
 });
 $("#Job_button").on('click',function(){
 $("#Job_tx").toggle();
-});
-$("#NationalID_button").on('click',function(){
-$("#NationalID_tx").toggle();
 });
 $("#Reset").on('click',function(){
 $("#FirstName_tx").hide();
@@ -271,19 +218,6 @@ $("#NationalID_tx").hide();
 
 <br><br>
 
-
-<b id="label">Mobile</b>
-<br><br>
-<?php
- echo $_SESSION["MobilePhone"];
-?>
-
-<br><br>
-
-<input class="bt" type="button" id="MobilePhone_button" Value="Edit">
-
-<br><br>
-
 <input class="in" type="number" id="MobilePhone_tx" Name="MobilePhone_tx" style="display:none;"  value=<?php echo $_SESSION["MobilePhone"]?>>
 <br><br>
 
@@ -325,9 +259,6 @@ $("#NationalID_tx").hide();
  echo $_SESSION["NationalID"];
 ?>
 
-<br><br>
-
-<input class="bt" type="button"  id="NationalID_button" Value="Edit">
 <br><br>
 <input class="in" type="number"  id="NationalID_tx" Name="NationalID_tx" Name="NationalID_tx" style="display:none;"  value=<?php echo $_SESSION["NationalID"]?>>
 

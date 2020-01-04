@@ -158,7 +158,7 @@ $sql="SELECT * FROM request_loan where Email='".$_SESSION['Email']."'";
 	   echo "</table>";
 	}
 	else {
-    echo "ERROR";
+    echo "<h4>No request loan yet</h4>";
 	}
 ?>
 <body>
@@ -169,21 +169,24 @@ $sql="SELECT * FROM request_loan where Email='".$_SESSION['Email']."'";
 
 <b id="label">Loan ID</b>
 <br>
-<input type="text" id="Id_tx" Name="Id_tx" style="display:block;  margin:0.3%;">
+<div class="form-group">
+<input type="text" id="Id_tx" Name="Id_tx" style="width:70%;" class="form-control">
 <br>
-
+</div>
 
 
 <b id="label">Amount</b>
 <br>
-
-<input  type="text" id="Amount_tx" Name="Amount_tx" style="display:block; margin:0.3%;">
+<div class="form-group">
+<input  type="text" id="Amount_tx" Name="Amount_tx" style="width:70%;" class="form-control">
 <br>
+</div>
 <b id="label">Salary</b>
 <br>
-
-<input  type="text" id="Salary_tx" Name="Salary_tx" style="display:block; margin:0.3%;">
+<div class="form-group">
+<input  type="text" id="Salary_tx" Name="Salary_tx" style="width:70%;" class="form-control">
 <br>
+</div>
 <input class="btn btn-default" type="Submit" style = "color: white;background-color: #212121 ; font-size: 20px; width:15%; margin:0.2%;" Value="Save" id="Save" Name="Save">
 
 </form>

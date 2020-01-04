@@ -21,13 +21,15 @@ $result=mysqli_query($conn,$sql);
 echo "<br>";
 
 echo "<table border=1 width=100%; class='table table-bordered table-hover'>
-<th style='text-align:center;'>Message</th>";
+<th style='text-align:center;'></th>
+<th style='text-align:center;'>Message</th>
+<th style='text-align:center;'>From</th>";
 
 
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_array($result)) {
         echo "<tr>".
-		"<td> <span class='glyphicon glyphicon-envelope'></span> ". $row["MessageCl"]."</td></tr>";
+		"<td style='width:1%;'> <span class='glyphicon glyphicon-envelope'></span> </td><td> ". $row["MessageCl"]."</td><td>".$row["Sender"]."</td></tr>";
     }
 }
 
